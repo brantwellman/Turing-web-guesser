@@ -10,13 +10,11 @@ get '/' do
 end
 
 def check_guess(guess)
-  # if guess.nil?
-  #   message = "Please provide a number."
-  # end
+  if guess.nil?
+    return message = "Please provide a number."
+  end
   guess = guess.to_i
   secret_num = settings.secret_number
-  # if guess.nil?
-  #   message = "Please provide a number."
   if guess > secret_num
     (guess - 5 > secret_num) ? message = "Woah! That is waaay too high!" : message = "Sorry. Your guess is too high"
   elsif guess < secret_num
@@ -33,7 +31,7 @@ def background_color(message)
     "#FCA395"
   elsif message.split.include?("Congrats!")
     "#169E1B"
-  # elsif message.split.include?("Please")
-  #   "#A3C9CF"
+  elsif message.split.include?("Please")
+    "#A3C9CF"
   end
 end
